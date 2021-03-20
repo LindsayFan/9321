@@ -40,14 +40,14 @@ def question_1(exposure, countries):
     """
 
     # exposure.csv seperate by ;   
-    df_exposure = pd.read_csv(exposure, sep = ';')
+    df_exposure = pd.read_csv(exposure, sep = ';',encoding='utf-8',low_memory=False)
     # delete all rows without country
     df_exposure = df_exposure[df_exposure['country'].notnull()]
     # change the column 'country' to 'Country' in order to match to 'countries.csv'
     df_exposure.rename(columns = {'country':'Country'},inplace = True)
 
     # countries.csv: seperate each row s by ','
-    df_countries = pd.read_csv(countries, sep = ',')
+    df_countries = pd.read_csv(countries, sep = ',',encoding='utf-8',low_memory=False)
 
     # I diaplace all the unique countries from countries.csv and exposure.csv and change them manually.
     df_exposure.replace('Brunei Darussalam', 'Brunei',inplace = True)
@@ -159,7 +159,7 @@ def question_4(df2, continents):
             Please read the assignment specs to know how to create the output dataframe
     """
 
-    df_continents = pd.read_csv(continents, sep = ',')
+    df_continents = pd.read_csv(continents, sep = ',',encoding='utf-8')
     
 
     df = df2.copy()
@@ -307,7 +307,7 @@ def question_8(df2, continents):
     :return: nothing, but saves the figure on the disk
     """
 
-    df_continents = pd.read_csv(continents, sep = ',')
+    df_continents = pd.read_csv(continents, sep = ',',encoding='utf-8')
     df_8 = df2.copy()
     total_population = []
     for i in range(0,df_8.shape[0]):
@@ -440,7 +440,7 @@ def question_10(df2, continents):
     :param continents: the path for the Countries-Continents.csv file
     """
 
-    df_continents = pd.read_csv(continents, sep = ',')
+    df_continents = pd.read_csv(continents, sep = ',',encoding='utf-8')
     df_10 = df2.copy()
     total_population = []
     for i in range(0,df_10.shape[0]):
